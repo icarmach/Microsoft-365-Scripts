@@ -3,7 +3,7 @@ Import-Module MSOnline
 
 Connect-MsolService
 
-$GroupName = "Test"
+$GroupName = "<Group Name>"
 $GroupInfo = Get-MsolGroup | Where-Object {$_.DisplayName -eq $GroupName}
 
 $FilePath = "C:\O365UnlicensedUsers.csv"
