@@ -1,0 +1,72 @@
+<!--
+  
+  The easiest method for creating a customized Start layout to apply to other Windows 10 devices is to set up the Start screen on a test computer and then export the layout.
+
+  To export the layout run this command in PowerShell:
+
+  Export-StartLayout –path <path><file name>.xml
+  e.g: Export-StartLayout –path C:\Users\User\Desktop\StartLayout.xml
+
+-->
+
+<LayoutModificationTemplate xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification">
+  <LayoutOptions StartTileGroupCellWidth="6" />
+  <DefaultLayoutOverride>
+    <StartLayoutCollection>
+      <defaultlayout:StartLayout GroupCellWidth="6">
+        <start:Group Name="Elementos educativos esenciales">
+          <start:DesktopApplicationTile Size="2x2" Column="0" Row="4" DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk" />
+          <start:Tile Size="2x2" Column="4" Row="4" AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" />
+          <start:Tile Size="2x2" Column="4" Row="2" AppUserModelID="Microsoft.Office.OneNote_8wekyb3d8bbwe!microsoft.onenoteim" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="7603651830" DisplayName="" Size="2x2" Column="2" Row="0" Arguments="-private -contentTile -url 0 https://word.office.com" Square71x71LogoUri="ms-appdata:///local/PinnedTiles/7603651830/tinytile.png" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/7603651830/squaretile.png" Wide310x150LogoUri="ms-appx:///" Square310x310LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff15366b" ForegroundText="light" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="32555428050" DisplayName="" Size="2x2" Column="2" Row="4" Arguments="-contentTile -url 0 https://teams.microsoft.com" Square71x71LogoUri="ms-appdata:///local/PinnedTiles/32555428050/tinytile.png" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/32555428050/squaretile.png" Wide310x150LogoUri="ms-appx:///" Square310x310LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff2e316b" ForegroundText="light" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="6501008900" DisplayName="" Size="2x2" Column="4" Row="0" Arguments="-contentTile -url 0 https://excel.office.com" Square71x71LogoUri="ms-appdata:///local/PinnedTiles/6501008900/tinytile.png" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/6501008900/squaretile.png" Wide310x150LogoUri="ms-appx:///" Square310x310LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff104026" ForegroundText="light" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="38975140460" DisplayName="" Size="2x2" Column="2" Row="2" Arguments="-contentTile -url 0 https://powerpoint.office.com" Square71x71LogoUri="ms-appdata:///local/PinnedTiles/38975140460/tinytile.png" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/38975140460/squaretile.png" Wide310x150LogoUri="ms-appx:///" Square310x310LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff8f2d15" ForegroundText="light" />
+          <start:Tile Size="2x2" Column="0" Row="0" AppUserModelID="Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe!Microsoft.MicrosoftOfficeHub" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="26310719480" DisplayName="" Size="2x2" Column="0" Row="2" Arguments="-contentTile -url 0 https://outlook.com" Square71x71LogoUri="ms-appdata:///local/PinnedTiles/26310719480/tinytile.png" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/26310719480/squaretile.png" Wide310x150LogoUri="ms-appx:///" Square310x310LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff06417a" ForegroundText="light" />
+        </start:Group>
+        <start:Group Name="Crea y explora">
+          <start:Tile Size="2x2" Column="0" Row="0" AppUserModelID="Microsoft.MSPaint_8wekyb3d8bbwe!Microsoft.MSPaint" />
+          <start:Tile Size="2x2" Column="4" Row="0" AppUserModelID="Microsoft.Microsoft3DViewer_8wekyb3d8bbwe!Microsoft.Microsoft3DViewer" />
+          <start:Tile Size="2x2" Column="2" Row="0" AppUserModelID="Microsoft.MixedReality.Portal_8wekyb3d8bbwe!App" />
+        </start:Group>
+      </defaultlayout:StartLayout>
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+  <CustomTaskbarLayoutCollection>
+    <defaultlayout:TaskbarLayout>
+      <taskbar:TaskbarPinList>
+        <taskbar:UWA AppUserModelID="Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe!Microsoft.MicrosoftOfficeHub" />
+        <taskbar:UWA AppUserModelID="Microsoft.MSPaint_8wekyb3d8bbwe!Microsoft.MSPaint" />
+
+        <!--
+
+          To get de AppUserModelID of all your apps run this code in Powershell
+
+            $installedapps = get-AppxPackage
+
+            $aumidList = @()
+            foreach ($app in $installedapps)
+            {
+                foreach ($id in (Get-AppxPackageManifest $app).package.applications.application.id)
+                {
+                    $aumidList += $app.packagefamilyname + "!" + $id
+                }
+            }
+
+            $aumidList
+
+          
+          The easiest way to find this data for an application is to:
+          
+            1 - Pin the application to the Start menu on a reference or testing PC.
+            2 - Open Windows PowerShell and run the Export-StartLayout cmdlet. 
+            3 - Open the generated XML file. 
+            4 - Look for an entry corresponding to the app you pinned.
+            5 - Look for a property labeled AppUserModelID or DesktopApplicationLinkPath.
+
+        -->
+      </taskbar:TaskbarPinList>
+    </defaultlayout:TaskbarLayout>
+  </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>
