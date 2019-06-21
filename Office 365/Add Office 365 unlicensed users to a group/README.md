@@ -6,12 +6,14 @@ Import-Module MSOnline
 
 Connect-MsolService
 
+$DomainName = "<Domain Name>"
 $GroupName = "<Group Name>"
 $GroupInfo = Get-MsolGroup | Where-Object {$_.DisplayName -eq $GroupName}
 
 $FilePath = "C:\O365UnlicensedUsers.csv"
 
-Get-MsolUser -All -UnlicensedUsersOnly | Select UserPrincipalName | Export-CSV $FilePath -NoTypeInformation
+#Get-MsolUser -All -UnlicensedUsersOnly | Select UserPrincipalName | Export-CSV $FilePath -NoTypeInformation
+Get-MsolUser -DomainName $DomainName -UnlicensedUsersOnly | Select UserPrincipalName | Export-CSV $FilePath -NoTypeInformation
 
 Import-CSV -Path $FilePath | ForEach { 
 	$UPN = $_.UserPrincipalName
